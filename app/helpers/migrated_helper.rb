@@ -1,0 +1,2 @@
+module MigratedHelper
+end
