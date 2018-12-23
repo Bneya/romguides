@@ -1,0 +1,29 @@
+Placeholder title <br>
+
+<%= link_to "Crear post", new_post_path %>
+<%= link_to "Wlcome", wlcome_index_path %>
+<%= link_to "Wlcome2", "/wlcome" %>
+
+<%= link_to "Log-in", new_user_session_path %>
+<%= link_to "Crear usario", new_user_registration_path %>
+<br><br>
+
+ETO OCURRE PRIMERO <br>
+
+<%= @post.each do |post| %>
+
+  <%= link_to post.title, post %>
+  <br>"Published "
+  <%= time_ago_in_words(post.created_at) %>
+  <br>by user.email
+  <%= post.user.email %>
+
+
+  <br><br>
+<% end %>
+
+
+
+
+<br>
+LALALALAL
