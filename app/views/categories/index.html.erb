@@ -1,0 +1,7 @@
+Estamos en categories/index
+
+ESTA ES LA PARTE DONDE ESCOGEMOS A QUÉ SECCIÓN IRNOS <br>
+<% @categories.each do |cat| %>
+  <%= link_to cat, posts_path(:category => cat) %> <br>
+
+<% end %>

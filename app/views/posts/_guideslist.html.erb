@@ -1,0 +1,10 @@
+<% @post.each do |post| %>
+
+  <%= link_to post.title, post %>
+  <br>"Published "
+  <%= time_ago_in_words(post.created_at) %>
+  <br>by user.email
+  <%= post.user.email %>
+
+  <br><br>
+<% end %>
