@@ -49,7 +49,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :category, :status, :thumbnail)
+    params.require(:post).permit(:title, :content, :category, :status, :thumbnail, :version)
   end
 
   def find_post
@@ -59,6 +59,8 @@ class PostsController < ApplicationController
   def stablish_categories_and_thumbnail
     # Esto es lo que hay que ir rellenando luego con las categorías finales
     @categories = CategoriesController.categories
+    @versions = CategoriesController.versions
+    @cat_names = CategoriesController.cat_names
 
     @thumbnails_list = ['img1', 'img2', 'img3', 'img4']
   end

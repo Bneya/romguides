@@ -1,7 +1,29 @@
-Estamos en categories/index
+Estamos en categories/index <br>
 
-ESTA ES LA PARTE DONDE ESCOGEMOS A QUÉ SECCIÓN IRNOS <br>
-<% @categories.each do |cat| %>
-  <%= link_to cat, posts_path(:category => cat) %> <br>
+<%= link_to "Crear post", new_post_path %>
+<%= link_to "Log-in", new_user_session_path %>
+<%= link_to "Crear usario", new_user_registration_path %>
+<br><br>
 
+ESTA ES LA PARTE DONDE ESCOGEMOS A QUÉ SECCIÓN IRNOS <br> <br>
+
+Estas son las categorías de ROM XINDONG: <br>
+
+<% @cats_xindong = @categories.where(versioncat: "Xindong") %>
+
+<br> MACROCATEGORÍA DE CRECIMIENTO DE PERSONAJE <br>
+<% @cats_xindong.where(macrocat: "char_growth").each do |cat| %>
+  <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
 <% end %>
+
+<br> MACROCATEGORÍA DE LIFE SKILLS <br>
+<% @cats_xindong.where(macrocat: "life_skills").each do |cat| %>
+  <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
+<% end %>
+
+<br> MACROCATEGORÍA DEMISCELÁNEO <br>
+<% @cats_xindong.where(macrocat: "misc").each do |cat| %>
+  <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
+<% end %>
+
+<!-- Acá tenemos que añadir las secciones de ROM TENCENT -->

@@ -1,23 +1,10 @@
-Placeholder title <br>
-
-<%= link_to "Crear post", new_post_path %>
+Estamos viendo los posts de la categoría: <%= @asked_cat %> <br> <br>
 
 
-<%= link_to "Log-in", new_user_session_path %>
-<%= link_to "Crear usario", new_user_registration_path %>
-<br><br>
-
-
-
-AQUÍ COMIENZA EL RENDER INDIVIDUAL <br>
+<hr>
 
 <%= render 'guideslist' %>
 
-<br> AQUÍ TERMINA EL RENDER INDIVIDUAL
+<hr>
 
-<br> CATEGORÍAS
-<%= @categories %>
-
-<br> Fin categorías
-
-Esta es la categoría pedida: <%= @asked_cat %>
+<%= link_to "Volver al inicio", root_path%>

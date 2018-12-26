@@ -1,7 +1,8 @@
 <%= simple_form_for @post do |f| %>
   <%= f.input :title %>
-  <%= f.cktext_area :content, rows: 10 %>
-  <%= f.input :category, collection: @categories %>
+  <%= f.cktext_area :content, rows: 20 %>
+  <%= f.input :version, collection: @versions %>
+  <%= f.input :category, collection: @categories.where(versioncat: "Xindong").pluck(:name) %>
   <%= f.input :thumbnail, as: :radio_buttons, collection: @thumbnails_list %>
   <%= f.hidden_field :status, :value => "pending" %>
   <%= f.submit %>
