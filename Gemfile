@@ -17,10 +17,15 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'haml', '~> 5.0', '>= 5.0.4'
 gem 'simple_form', '~> 4.1'
 gem 'devise', '~> 4.5'
+gem 'seed_dump'
 
 # Cosas nuevas
 gem "ckeditor"
-gem "paperclip"
+gem 'rolify', '~> 5.2'
+
+# Cosas de bootstrap
+gem 'bootstrap'
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

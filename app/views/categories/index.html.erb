@@ -1,8 +1,16 @@
 Estamos en categories/index <br>
 
 <%= link_to "Crear post", new_post_path %>
+
+<!-- Esta parte es el panel de log-in/sign-in -->
+<hr>
+<%= render 'shared/userlogin' %>
+<hr>
+
+<!-- Esta parte es la antigua, hay que borrarla luego -->
 <%= link_to "Log-in", new_user_session_path %>
 <%= link_to "Crear usario", new_user_registration_path %>
+<%= link_to "Cerrar sesión", destroy_user_session_path %>
 <br><br>
 
 ESTA ES LA PARTE DONDE ESCOGEMOS A QUÉ SECCIÓN IRNOS <br> <br>
@@ -21,7 +29,7 @@ Estas son las categorías de ROM XINDONG: <br>
   <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
 <% end %>
 
-<br> MACROCATEGORÍA DEMISCELÁNEO <br>
+<br> MACROCATEGORÍA DE MISCELÁNEO <br>
 <% @cats_xindong.where(macrocat: "misc").each do |cat| %>
   <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
 <% end %>
