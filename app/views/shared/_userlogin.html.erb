@@ -1,7 +1,8 @@
-Esta es la parte del login <br>
 <% if user_signed_in? %>
+  Actualmente estás logeado con el usuario: <%= current_user.email %>
   <%= button_to('Logout', destroy_user_session_path, method: :delete) %>
 <% else %>
+  Actualmente no estás conectado <br>
   <%= link_to('Log-in', new_user_session_path)  %>
   <%= link_to('Sign-in', new_user_registration_path)  %>
 <% end %>

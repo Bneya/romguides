@@ -7,13 +7,6 @@ Estamos en categories/index <br>
 <%= render 'shared/userlogin' %>
 <hr>
 
-<!-- Esta parte es la antigua, hay que borrarla luego -->
-<%= link_to "Log-in", new_user_session_path %>
-<%= link_to "Crear usario", new_user_registration_path %>
-<%= link_to "Cerrar sesión", destroy_user_session_path %>
-<br><br>
-
-ESTA ES LA PARTE DONDE ESCOGEMOS A QUÉ SECCIÓN IRNOS <br> <br>
 
 Estas son las categorías de ROM XINDONG: <br>
 
@@ -35,3 +28,11 @@ Estas son las categorías de ROM XINDONG: <br>
 <% end %>
 
 <!-- Acá tenemos que añadir las secciones de ROM TENCENT -->
+
+<br><br><br> Acá está la lista de noticias de la versión Xindong <br>
+
+<!-- Este for carga todas las noticias -->
+<% Post.where(category: "Noticias").each do |noticia| %>
+  <%= noticia.thumbnail %>
+  <%= link_to noticia.title, noticia %> <br>
+<% end %>

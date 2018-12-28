@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  Crear nuevo post
+  <%= render 'form' %>
+<% else %>
+  Debes estár logeado para crear un post <br>
+  <%= render 'shared/userlogin' %>
+  <br><%= link_to "Volver al inicio", root_path %>
+<% end %>

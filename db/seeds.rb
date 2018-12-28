@@ -27,7 +27,8 @@ Guidecategory.create!([
   {name: "Clan", macrocat: "misc", versioncat: "Tencent", precedence: 2},
   {name: "General", macrocat: "misc", versioncat: "Tencent", precedence: 1},
   {name: "Eventos", macrocat: "misc", versioncat: "Tencent", precedence: 3},
-  {name: "Dungeons", macrocat: "misc", versioncat: "Xindong", precedence: 5}
+  {name: "Dungeons", macrocat: "misc", versioncat: "Xindong", precedence: 5},
+  {name: "Noticias", macrocat: "misc", versioncat: "Xindong", precedence: 6}
 ])
 Article.create!([
   {title: "", body: "<h2 style=\"font-style:italic;\">Este es un post con CKEDITOR</h2>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"color:#2ecc71;\">Podemos escribir todo lo que queramos con este bonito editor</span></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p><span style=\"background-color:#1abc9c;\">Pero todav&iacute;a no podemos insertar fotos</span></p>\r\n"},

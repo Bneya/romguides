@@ -18,7 +18,10 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.build
+    if user_signed_in?
+      puts "Se está ejecutndo la línea que no debería"
+      @post = current_user.posts.build
+    end
   end
 
   def create

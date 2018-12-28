@@ -10,9 +10,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    # Acá añades cualquier cosa que quieras
+
+  end
 
   # GET /resource/edit
   # def edit
