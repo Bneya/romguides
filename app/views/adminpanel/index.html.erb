@@ -1,0 +1,34 @@
+Esta sección es solo para administradores <br> <br>
+
+<% if current_user.has_role? :admin %>
+  Eres ADMINISTRADOR, bienvenido <br> <br>
+  Estos son todos los post en estado <b>"PENDING"</b> <br>
+
+  <% @post_pendienteS = Post.where(status: "pending").order(:category, :id) %>
+  <% @post_pendienteS.each do |post| %> <br>
+    <%= post.id %> - <%= post.status %> - <%= post.category %> - <%= link_to post.title, post%>
+  <% end %>
+
+  <br><br>
+
+  Estos son todos los post en estado <b>"ACCEPTED"</b> <br>
+
+  <% @post_pendienteS = Post.where(status: "accepted").order(:category, :id) %>
+  <% @post_pendienteS.each do |post| %> <br>
+    <%= post.id %> - <%= post.status %> - <%= post.category %> - <%= link_to post.title, post%>
+  <% end %>
+
+  <br><br>
+
+  Estos son todos los post en estado <b>"REJECTED"</b> <br>
+
+  <% @post_pendienteS = Post.where(status: "rejected").order(:category, :id) %>
+  <% @post_pendienteS.each do |post| %> <br>
+    <%= post.id %> - <%= post.status %> - <%= post.category %> - <%= link_to post.title, post%>
+  <% end %>
+
+
+<% else %>
+  No eres administrador, no puedes ver esta página <br>
+  <%= link_to "Volver al inicio", root_path %>
+<% end %>

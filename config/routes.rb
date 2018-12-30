@@ -20,4 +20,8 @@ Rails.application.routes.draw do
                                     mailer: "users/mailer",
                                     unlocks: "users/unlocks" }
 
+  get 'adminpanel', :to=> 'adminpanel#index'
+
+  post '/markstatus', to: 'posts#markstatus', as: 'markstatus'
+
 end

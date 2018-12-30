@@ -2,7 +2,8 @@ class PostsController < ApplicationController
 
   # La siguiente línea establece que se llamará al método <find_post>
   # antes de llamar a los métodos <show>, <edit>, <update>, <destroy>
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_post, only: [:show, :edit, :update, :destroy,
+                                   :markstatus]
   before_action :stablish_categories_and_thumbnail
 
   def viewcategory
@@ -11,7 +12,7 @@ class PostsController < ApplicationController
   def index
     @asked_cat = params[:category]
     # @post = Post.all.order("created_at DESC")
-    @post = Post.where(category: @asked_cat)
+    @post = Post.where(category: @asked_cat, status: 'accepted')
   end
 
   def show
@@ -49,10 +50,19 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def markstatus
+    if current_user.has_role? :admin
+      @new_status = params[:newstatus]
+      @post.update(status: @new_status)
+      redirect_to adminpanel_path
+    else
+      rediret to root_path
+    end
+  end
 
   private
   def post_params
-    params.require(:post).permit(:title, :content, :category, :status, :thumbnail, :version)
+    params.require(:post).permit(:title, :content, :category, :status, :thumbnail, :version, :id, :newstatus)
   end
 
   def find_post
