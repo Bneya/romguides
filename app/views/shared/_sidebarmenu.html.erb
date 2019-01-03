@@ -15,3 +15,24 @@
 <% @cats_xindong.where(macrocat: "misc").each do |cat| %>
   <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
 <% end %>
+
+
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Crecimiento de personaje
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <% @cats_xindong.where(macrocat: "char_growth").each do |cat| %>
+      <li><%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %></li>
+    <% end %>
+
+  </ul>
+  <br>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Habilidades secundarias
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <% @cats_xindong.where(macrocat: "life_skills").each do |cat| %>
+      <li><%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> </li>
+    <% end %>
+
+  </ul>
+</div>

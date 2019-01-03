@@ -13,11 +13,13 @@ ID de usuario:
   <!-- link_to "Borrar post", post_path(@post), method: :delete, data: {confirm: "Estás seguro de borrar?"} -->
 <% end %>
 
-<% if current_user.has_role? :admin %>
-  <%= button_to 'Marcar como aceptado', markstatus_path(:id => @post.id, :newstatus => 'accepted'), method: :post %>
-  <%= button_to 'Marcar como rechazado', markstatus_path(:id => @post.id, :newstatus => 'rejected'), method: :post %>
-  <%= button_to 'Marcar como pendiente', markstatus_path(:id => @post.id, :newstatus => 'pending'), method: :post %>
-  <br> El estado actual es <%= @post.status %>
+<% if user_signed_in? %>
+  <% if current_user.has_role? :admin  %>
+    <%= button_to 'Marcar como aceptado', markstatus_path(:id => @post.id, :newstatus => 'accepted'), method: :post %>
+    <%= button_to 'Marcar como rechazado', markstatus_path(:id => @post.id, :newstatus => 'rejected'), method: :post %>
+    <%= button_to 'Marcar como pendiente', markstatus_path(:id => @post.id, :newstatus => 'pending'), method: :post %>
+    <br> El estado actual es <%= @post.status %>
+  <% end %>
 <% end %>
 
 <br>

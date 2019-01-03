@@ -1,0 +1,16 @@
+body {
+  background-color: 'cyan';
+}
+
+
+.dropdown .dropdown-menu {
+    position: static;
+    float: none;
+    background-color: #000000;
+}
+
+
+.container .dropdown-menu {
+    position: static;
+    float: none;
+}
