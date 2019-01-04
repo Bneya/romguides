@@ -25,11 +25,12 @@ gem 'rolify', '~> 5.2'
 
 
 # Cosas de bootstrap
-# gem 'bootstrap-sass', '~> 3.2.0'
+gem 'bootstrap-sass'
 gem 'bootstrap', '~> 4.0.0'
 
 # gem 'sassc-rails', '>= 2.0.0'
-# gem 'autoprefixer-rails'
+gem 'autoprefixer-rails'
+gem 'mini_racer'
 gem 'sprockets'
 gem 'jquery-rails'
 
