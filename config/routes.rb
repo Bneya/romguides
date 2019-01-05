@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :posts, :articles, :categories
   # root 'wlcome#index'
-  root 'categories#index'
+  root 'categoriesnew#index'
 
   # La siguiente línea lo que haría sería permitir que se acceda desde navegador a /wlcome/index
   # get 'wlcome/index'
@@ -23,5 +23,8 @@ Rails.application.routes.draw do
   get 'adminpanel', :to=> 'adminpanel#index'
 
   post '/markstatus', to: 'posts#markstatus', as: 'markstatus'
+
+  # get "prueba1", :to=> "prueba1#index"
+
 
 end

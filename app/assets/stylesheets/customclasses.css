@@ -1,0 +1,41 @@
+body {
+  background-color: 'cyan';
+}
+
+
+.dropdown .dropdown-menu {
+    position: static;
+    float: none;
+    background-color: #000000;
+}
+
+
+.container .dropdown-menu {
+    position: static;
+    float: none;
+}
+
+
+.finputpass {
+  width: 100%;
+  height: 30px;
+  font-family: medium Pass,sans-serif;
+  font: medium;
+  resize: none;
+  border-radius: 18px;
+  border: 1px solid #428bca;
+  padding-left: 15px;
+  padding-top: 3px;
+}
+
+
+.finputemail {
+  font: medium Verdana,sans-serif;
+  resize: none;
+  width: 100%;
+  height: 30px;
+  border-radius: 18px;
+  border: 1px solid #428bca;
+  padding-left: 15px;
+  padding-top: 3px;
+}

@@ -1,0 +1,23 @@
+Estamos en categoriesnew/index <br>
+
+<%= link_to "Crear post", new_post_path %>
+
+<!-- Esta parte es el panel de log-in/sign-in -->
+<hr>
+<%= render 'shared/userlogin' %>
+<hr>
+
+
+Estas son las categorías de ROM XINDONG: <br>
+
+<%= render 'shared/sidebarmenu' %>
+
+<!-- Acá tenemos que añadir las secciones de ROM TENCENT -->
+
+<br><br><br> Acá está la lista de noticias de la versión Xindong <br>
+
+<!-- Este for carga todas las noticias -->
+<% Post.where(category: "Noticias").each do |noticia| %>
+  <%= noticia.thumbnail %>
+  <%= link_to noticia.title, noticia %> <br>
+<% end %>

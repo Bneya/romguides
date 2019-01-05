@@ -5,19 +5,39 @@
     <!-- %= csrf_meta_tags % -->
     <!-- %= csp_meta_tag %> -->
 
+    <!-- %= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' % -->
+    <!-- %= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' % -->
+
+    <% csrf_meta_tags %>
+    <% csp_meta_tag %>
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+    <!-- Template de post show -->
+    <link href="app/assets/stylesheets/blog-post.css" >
+
+    <!-- Import de clases para login screen-->
+    <link href="app/assets/stylesheets/loginscreen.css" >
+
+    <!-- Import de clases custom, debe estar al final para sobreescribir cualquier cosa-->
+    <link href="app/assets/stylesheets/customclasses.css" >
+
+
   </head>
 
   <body>
 
-
-
+    <!-- Para administrar las alertas. Ahora no son alerts -->
     <% flash.each do |name, msg| %>
       <div class='alert alert-info'>
         <%= msg %>
       </div>
     <% end %>
+
+
 
     <%= yield %>
   </body>
