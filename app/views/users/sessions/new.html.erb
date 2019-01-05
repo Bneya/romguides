@@ -1,6 +1,22 @@
 
 <!-- Probando el nuevo html+css+bootstrap-->
 
+<head>
+  <style type="text/css">
+    .form-control {
+  width: 100%;
+  height: 30px;
+  font-family: medium Verdana,sans-serif;
+  font: medium;
+  resize: none;
+  border-radius: 18px;
+  border: 1px solid #428bca;
+  padding-left: 15px;
+  padding-top: 3px;
+    }
+  </style>
+</head>
+
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="container-fluid">
     <div class="row no-gutter">
@@ -10,31 +26,33 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h3 class="login-heading mb-4">Bienvenido de regreso</h3>
+                <h1 class="login-heading mb-4" style="text-align: center;">Bienvenido de regreso</h3>
                 <form>
                   <%= simple_form_for(resource, as: resource_name, :html => {class:"form-label-group"}, url: session_path(resource_name)) do |f| %>
-                    <table>
-                      <tr>
-                        <td><%= f.label :email, "Email" %></td>
-                        <td><%= f.text_area :email,
-                                    required: false,
+                      <div class="row">
+                        <div class="col-md-2"><%= f.label :email, "Email" %></div>
+                        <div class="col-md-8"><%= f.text_area :email,
+                                    required: true,
                                     autofocus: true,
                                     label: false,
-                                    :class=>'finputemail' %></td>
-                      </tr>
-                      <tr>
-                        <td><%= f.label :password, "Contraseña" %></td>
-                        <td><%= f.text_area :password,
-                                    required: false,
-                                    autofocus: true,
-                                    type: "password",
-                                    Style: 'type: "password"',
-                                    :class => 'finputpass' %></td>
-                      </tr>
-                    </table>
+                                    :id => 'inputEmail',
+                                    :type => 'email',
+                                    :size => '50x1',
+                                    :class => 'finputemail' %></div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-2"><%= f.label :password, "Contraseña" %></div>
+                        <div class="col-md-8">
+                          <%= f.input :password,
+                          :class => 'form-control',
+                          :id => 'exampleInputPassword',
+                          required: true,
+                          label: false,
+                          autofocus: false%></div>
+                      </div>
                   <% end %>
-
-
+                  <br>
                   <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Ingresar</button>
                   <div class="text-center">
                     <a class="small" href="#">Forgot password?</a></div>
