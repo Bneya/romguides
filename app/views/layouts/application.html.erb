@@ -25,19 +25,39 @@
     <!-- Import de clases custom, debe estar al final para sobreescribir cualquier cosa-->
     <link href="app/assets/stylesheets/customclasses.css" >
 
-
   </head>
 
-  <body>
-
+  <body style="margin-top: -65px">
     <!-- Para administrar las alertas. Ahora no son alerts -->
-    <% flash.each do |name, msg| %>
-      <div class='alert alert-info'>
-        <%= msg %>
-      </div>
-    <% end %>
 
+<!-- HEADER -->
 
+<header class="header_area" id="header">
+  <nav class="navbar navbar-expand-lg" style="background: #131516; height: 65px">
+    <a class="navbar-brand" href=<%= root_path %>>
+      <%= image_tag("/logo.png", style: 'height:60;width: 60px;') %>
+      </a>
+      <% if user_signed_in? %>
+        <p style="color: white"> Estas conectado como: <%= current_user.email %>
+         - <%= link_to "Sign Out", destroy_user_session_path, :method=>'delete'%></p>
+      <% else %>
+        <div class="dorne-signin-btn">
+            <a href=<%= new_user_session_path %>>Log in</a>
+        </div>
+        <div class="dorne-signin-btn">
+            <a href=<%= new_user_registration_path %>>Sign up</a>
+        </div>
+      <% end %>
+  </nav>
+  </header>
+
+  <% flash.each do |name, msg| %>
+    <div class='alert alert-info'>
+      <%= msg %>
+    </div>
+  <% end %>
+
+<!-- END HEADER -->
 
     <%= yield %>
   </body>
