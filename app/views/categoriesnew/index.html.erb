@@ -1,16 +1,86 @@
-Estamos en categoriesnew/index <br>
-
-<%= link_to "Crear post", new_post_path %>
-
-<!-- Esta parte es el panel de log-in/sign-in -->
-<hr>
-<%= render 'shared/userlogin' %>
-<hr>
 
 
-Estas son las categorías de ROM XINDONG: <br>
 
-<%= render 'shared/sidebarmenu' %>
+<div class="container" style="width: 100%; border: 1px solid #000000;">
+  <div class="row">
+    <!-- div class="col custombannerbg"><% (1..15).each do |n|%> <br> <% end %></div> -->
+    <div class="col">
+      <%= image_tag("/banner4.png", :class=>"custombanner")%>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-4" style="text-align: center;">
+
+
+      <%= render 'shared/sidebarmenu' %>
+
+
+
+
+    </div>
+    <div class="col">
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+      <!-- Esto es otro contenedor dentro del supracontenedor-->
+      <div class="container" style="border: 1px solid #000000">
+        <div class="row">
+          <div class="col">
+            Noticias recientes
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="container">
+
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8" style="border: 1px solid #000000; text-align: center;">
+
+      <%= render 'shared/sidebarmenu' %>
+      PROBANDO QUE RENDERIZE DONDE DEBERÍA
+
+    </div>
+
+    <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+      AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+      <!-- Esto es otro contenedor dentro del supracontenedor-->
+      <div class="container" style="border: 1px solid #000000">
+        <div class="row">
+          <div class="col">
+            Noticias recientes
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+
+  </div>
+  <!-- /.row -->
+
+</div>
+
 
 <!-- Acá tenemos que añadir las secciones de ROM TENCENT -->
 
@@ -21,3 +91,8 @@ Estas son las categorías de ROM XINDONG: <br>
   <%= noticia.thumbnail %>
   <%= link_to noticia.title, noticia %> <br>
 <% end %>
+
+<!-- Esta parte es el panel de log-in/sign-in -->
+<hr>
+<%= render 'shared/userlogin' %>
+<hr>
