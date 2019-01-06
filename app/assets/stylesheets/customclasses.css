@@ -41,6 +41,10 @@ body {
 }
 
 
-.wrapper {
-  color: #000000;
+.downloadcustom {
+  color: #282828;
+  background: #FFFFFF;
+  height: inherit;
+  text-decoration: none;
+  padding: 8px;
 }

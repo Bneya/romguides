@@ -59,7 +59,7 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #2e618d;
+    background: #383838;
     color: #fff;
     transition: all 0.3s;
 }
@@ -70,12 +70,14 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #275379;
+    background: #282828;
+    text-align: center;
+    font-size: 30px;
 }
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #275379;
+    border-bottom: 1px solid #383838;
 }
 
 #sidebar ul p {
@@ -87,17 +89,20 @@ a:focus {
     padding: 10px;
     font-size: 1.1em;
     display: block;
+    color: #fff;
 }
 
 #sidebar ul li a:hover {
     color: #275379;
     background: #fff;
+    text-decoration: none;
 }
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
     color: #fff;
-    background: #275379;
+    background: #202020;
+    font-weight: bold;
 }
 
 a[data-toggle="collapse"] {
@@ -112,11 +117,11 @@ a[data-toggle="collapse"] {
     transform: translateY(-50%);
 }
 
-/* ------Dentro del click a categoría */
+/* ------Items de la categoría al clickear */
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #2e618d;
+    background: #282828;
     color: #fff;
 }
 
@@ -130,6 +135,7 @@ ul.CTAs a {
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
+    text-decoration: none;
 }
 
 a.download {

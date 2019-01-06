@@ -5,12 +5,12 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <h3>Categorías</h3>
+            Categorías
         </div>
 
         <ul class="list-unstyled components">
 
-            <li class="active">
+            <li>
                 <a href="#chargrowth_submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Crecimiento de personaje</a>
                 <ul class="collapse list-unstyled" id="chargrowth_submenu">
                     <% @cats_xindong.where(macrocat: "char_growth").each do |cat| %>
@@ -18,7 +18,7 @@
                     <% end %>
                 </ul>
             </li>
-            <li class="active">
+            <li>
                 <a href="#lifeskills_submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Otras habilidades</a>
                 <ul class="collapse list-unstyled" id="lifeskills_submenu">
                   <% @cats_xindong.where(macrocat: "life_skills").each do |cat| %>
@@ -26,7 +26,7 @@
                   <% end %>
                 </ul>
             </li>
-            <li class="active">
+            <li>
                 <a href="#misc_submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Misceláneo</a>
                 <ul class="collapse list-unstyled" id="misc_submenu">
                   <% @cats_xindong.where(macrocat: "misc").each do |cat| %>
@@ -37,9 +37,9 @@
         </ul>
 
         <ul class="list-unstyled CTAs">
-            <li>
-                <a href="posts/new" class="download">Crear post</a>
-            </li>
+
+            <a href="posts/new" class="downloadcustom">Crear post</a>
+
         </ul>
     </nav>
 
