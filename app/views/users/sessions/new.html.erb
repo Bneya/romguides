@@ -26,19 +26,19 @@
           <div class="container">
             <div class="row">
               <div class="col-md-9 col-lg-8 mx-auto">
-                <h1 class="login-heading mb-4" style="text-align: center;">Bienvenido de regreso</h3>
+                <h1 class="login-heading mb-4" style="text-align: center;">Bienvenido de regreso</h1>
                 <form>
                   <%= simple_form_for(resource, as: resource_name, :html => {class:"form-label-group"}, url: session_path(resource_name)) do |f| %>
                       <div class="row">
                         <div class="col-md-2"><%= f.label :email, "Email" %></div>
-                        <div class="col-md-8"><%= f.text_area :email,
+                        <div class="col-md-8"><%= f.input :email,
                                     required: true,
                                     autofocus: true,
                                     label: false,
                                     :id => 'inputEmail',
                                     :type => 'email',
                                     :size => '50x1',
-                                    :class => 'finputemail' %></div>
+                                    :class => 'form-control' %></div>
                       </div>
                       <br>
                       <div class="row">

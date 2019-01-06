@@ -28,4 +28,4 @@
 
 
 # Ignore refeence to database.yml
-config/database.yml
+/config/database.yml
