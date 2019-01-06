@@ -58,10 +58,10 @@ a:focus {
 
 #sidebar {
     min-width: 250px;
-    max-width: 250px;
     background: #383838;
     color: #fff;
     transition: all 0.3s;
+    width: inherit;
 }
 
 #sidebar.active {
@@ -166,7 +166,7 @@ a.article:hover {
 
 @media (max-width: 768px) {
     #sidebar {
-        margin-left: -250px;
+        margin-left: 0;
     }
     #sidebar.active {
         margin-left: 0;

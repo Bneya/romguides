@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 2019_01_05_185127) do
     t.integer "precedence"
   end
 
+  create_table "guides", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "category"
+    t.string "thumbnail"
+    t.integer "user_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
