@@ -13,7 +13,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <!-- Para hacer que funcione responsive-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,47 +45,38 @@
 <!-- HEADER -->
 
 <header class="header_area" id="header">
-  <nav class="navbar navbar-expand-lg" style="
-  background: #131516;
-  height: 65px;
-  width: 100%;
-  position: fixed;
-  margin-top: -60px;
-  ">
-    <div class="navbar-collapse collapse w-100 order-0 dual-collapse2" style="padding-top: 7px">
-      <a class="navbar-brand" href=<%= root_path %>>
-        <%= image_tag "/logo.png", style: 'height:60;width: 60px;' %>
-      </a>
-    </div>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark", style="position: fixed; width:100%;margin-top: -60px;">
+  <a class="navbar-brand" href="#"><%= image_tag "/logo.png", style: 'height:50px ;width: 60px;', alt: "" %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
 
-    <div class="navbar-collapse collapse w-100 order-1 dual-collapse2" style="padding-top: 7px"></div>
+<% if user_signed_in? %>
 
-    <% if user_signed_in? %>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="padding-top: 7px">
-        <span class="navbar-brand mr-sm-2 text-right h1">
-          <div class="container">
-            <div class="row">
-              <div class="col-lm-3"><p style="color: white;padding-right: 10px;">Estas conectado como: <%= current_user.email %></p></div>
-              <div class="col-lm-3"><%= button_to('Logout', destroy_user_session_path, method: :delete) %></div>
-            </div>
-          </div>
-        </span>
-      </div>
-    <% else %>
-      <div class="navbar-collapse collapse w-100 order-2 dual-collapse2" style="padding-top: 7px"></div>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-        <span class="navbar-brand mr-sm-2 text-right h1">
-          <div class="container">
-            <div class="row">
-              <div class="col-lm-3" style="padding-right: 5px;"><%= button_to('Iniciar sesión', new_user_session_path) %></div>
-              <div class="col-lm-3" style="padding-left: 5px;"><%= button_to('Registrarse', new_user_registration_path) %></div>
-            </div>
-          </div>
-        </span>
-      </div>
-    <% end %>
-  </nav>
-  </header>
+      <li class="nav-item">
+        <p>Estas conectado como: <%= current_user.email %></p>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Registrarse', new_user_registration_path, :method=>"get", :class=>"nav-link") %>
+      </li>
+
+<% else %>
+
+      <li class="nav-item">
+        <%= link_to('Iniciar sesión', new_user_session_path, :method=>"get", :class=>"nav-link") %>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Registrarse', new_user_registration_path, :method=>"get", :class=>"nav-link") %>
+      </li>
+
+<% end %>
+
+    </ul>
+  </div>
+</nav>
+</header>
 
   <% flash.each do |name, msg| %>
     <div class='alert alert-info'>
