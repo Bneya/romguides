@@ -30,7 +30,7 @@ gem 'bootstrap', '~> 4.0.0'
 
 # gem 'sassc-rails', '>= 2.0.0'
 gem 'autoprefixer-rails'
-# gem 'mini_racer'
+gem 'mini_racer'
 gem 'sprockets'
 gem 'jquery-rails'
 
