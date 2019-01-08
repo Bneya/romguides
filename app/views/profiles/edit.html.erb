@@ -1,6 +1,16 @@
 <h1>Editing Profile</h1>
 
+<% if current_user.id == @profile.user_id %>
+
 <%= render 'form', profile: @profile %>
+
+<% else %>
+
+<script type="text/javascript">
+	window.location.href="/403.html"  // put your correct path in a string here
+</script>
+
+<% end %>
 
 <%= link_to 'Show', @profile %> |
 <%= link_to 'Back', profiles_path %>
