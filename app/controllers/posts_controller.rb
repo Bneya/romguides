@@ -10,9 +10,16 @@ class PostsController < ApplicationController
   end
 
   def index
+
     @asked_cat = params[:category]
-    # @post = Post.all.order("created_at DESC")
+
+    if @asked_cat.nil?
+      @asked_cat = "Noticias"
+    end
+
     @post = Post.where(category: @asked_cat, status: 'accepted')
+
+
   end
 
   def show

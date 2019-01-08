@@ -1,27 +1,27 @@
 
-<div class="containter">
+<div class="containter" style="padding: 15px">
   <div class="row">
     <div class="col" style="text-align: center">
-      <h1 style="color: #667">NOTICIAS</h1> <br><br>
+      <h1 style="color: #667"> <%= @asked_cat %> </h1> <br><br>
     </div>
   </div>
-  <% Post.where(category: "Noticias").each do |noticia| %>
+  <% Post.where(category: @asked_cat).each do |article| %>
   <div class="row">
-    <div class="col-3">
-      <%= noticia.thumbnail %>
+    <div class="col-4" style= "text-align: center;">
+      <%= article.thumbnail %>
     </div>
 
-    <div class="col-9">
+    <div class="col-8">
 
       <div class="container">
         <div class="row">
           <div class="col">
-            <h2><%= link_to noticia.title, noticia %></h2>
+            <h2><%= link_to article.title, article %></h2>
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <%= strip_tags(noticia.content)[0..500] + " ..." %>
+            <%= strip_tags(article.content)[0..300] + " ..." %>
           </div>
         </div>
       </div>
