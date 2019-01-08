@@ -59,7 +59,7 @@
         <p>Estas conectado como: <%= current_user.email %></p>
       </li>
       <li class="nav-item">
-        <%= link_to('Registrarse', new_user_registration_path, :method=>"get", :class=>"nav-link") %>
+        <%= link_to('Logout', destroy_user_session_path, method: :get, :class=>"nav-link") %>
       </li>
 
 <% else %>
