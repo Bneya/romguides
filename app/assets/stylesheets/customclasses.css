@@ -69,3 +69,8 @@ body {
   width: inherit;
   border: 1px solid #000000;
 }
+
+.customthumbnail {
+  width: inherit;
+  max-height: 100px;
+}

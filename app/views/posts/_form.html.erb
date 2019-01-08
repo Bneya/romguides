@@ -1,11 +1,44 @@
+<!-- Opciones de thumbnai -->
+<% @thumbnails_list = ['thumb1', 'thumb2', 'thumb3', 'thumb4'] %>
+<% @thumbnails_list = (1..4).map { |x| "<img src= '/thumbnails/thumb" + x.to_s + ".png' >" } %>
+<%= @thumbnails_list %>
+
 <%= simple_form_for @post do |f| %>
-  <%= f.input :title, required: true %>
-  <%= f.cktext_area :content, rows: 20 %>
-  <%= f.input :version, collection: @versions, include_blank: false, disabled: true %>
-  <%= f.input :category, collection: @categories.where(versioncat: "Xindong").pluck(:name), required: true %>
-  <%= f.input :thumbnail, as: :radio_buttons, collection: @thumbnails_list, required: true %>
-  <%= f.hidden_field :status, :value => "pending" %>
+  <%= f.input :title,
+              required: true %>
+  <%= f.cktext_area :content,
+                    rows: 20 %>
+  <%= f.input :version,
+              collection: @versions,
+              include_blank: false,
+              disabled: true %>
+
+  <% if current_user.has_role? :admin %>
+    <%= f.input :category,
+                collection: @categories.where(versioncat: "Xindong").pluck(:name),
+                required: true %>
+    <%= f.input :thumbnail %>
+  <% else %>
+    <%= f.input :category,
+                collection: @categories.where(versioncat: "Xindong").where.not(name: "Noticias").pluck(:name),
+                required: true %>
+    <% @thumbnails_list = ['thumb1', 'thumb2', 'thumb3', 'thumb4'] %>
+      <%= f.collection_radio_buttons(
+        :thumbnail, @thumbnails_list.map {|name| ["/thumbnails/" + name + ".png", name]}, :first, :last
+      ) do |b|
+        b.label { b.radio_button + image_tag("/thumbnails/#{b.text}.png", size: "50x50") }
+
+      end
+    %>
+  <% end %>
+
+  <%= f.hidden_field :status,
+                     :value => "pending" %>
+  <br>
   <%= f.submit %>
+
+
+
 
 
 <% end %>

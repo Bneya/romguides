@@ -1,14 +1,22 @@
 
-<div class="containter" style="padding: 15px">
+<div class="containter" style="padding-left: 10px">
   <div class="row">
     <div class="col" style="text-align: center">
       <h1 style="color: #667"> <%= @asked_cat %> </h1> <br><br>
     </div>
   </div>
-  <% Post.where(category: @asked_cat).each do |article| %>
+  <% Post.where(category: @asked_cat).where(status: "accepted").each do |article| %>
   <div class="row">
-    <div class="col-4" style= "text-align: center;">
-      <%= article.thumbnail %>
+    <div class="col-4" style= "text-align: center;
+                               background-image: url('<%= article.thumbnail %>');
+                               background-size: cover;
+                               background-position: center;
+                               min-height: 80px;">
+      <% begin %>
+
+      <% rescue %>
+        no_thumbnail
+      <% end %>
     </div>
 
     <div class="col-8">
