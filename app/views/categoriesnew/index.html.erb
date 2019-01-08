@@ -12,13 +12,17 @@
                                      padding-right: 15px!important;
                                      padding-left: 15px!important;">
 
-    <div class="row no-gutters" style="border: 1px solid cyan; margin-right: -15px;margin-left: -15px">
+    <div class="row no-gutters" style="border: 1px solid cyan;
+                                       margin-right: -15px;
+                                       margin-left: -15px">
       <div class="col">
         <%= image_tag("https://i.imgur.com/zBBfmzk.png", :class=>"custombanner")%>
       </div>
     </div>
 
-    <div class="row no-gutters" style="border: 1px solid cyan">
+    <div class="row no-gutters" style="border: 1px solid cyan;
+                                       margin-right: -15px;
+                                       margin-left: -15px"">
 
       <!-- Post Content Column -->
       <div class="col-md-4 col-xs-4 no-gutters" style="border: 4px solid pink;
@@ -29,20 +33,10 @@
 
       </div>
 
-      <!-- Sidebar Widgets Column -->
+      <!-- Columna lista de noticias -->
       <div class="col-md-8" style="border: 1px solid #000000">
-        alalalal segunda columna
 
-        <div class="container" style="border: 1px solid #000000">
-          <div class="row">
-            <div class="col">
-              Col1
-            </div>
-            <div class="col">
-              COL2
-            </div>
-          </div>
-        </div>
+        <%= render "shared/noticelist" %>
 
       </div>
 
@@ -52,21 +46,3 @@
   </div>
   <!-- /.container -->
 </body>
-
-
-
-
-<!-- Acá tenemos que añadir las secciones de ROM TENCENT -->
-
-<br><br><br> Acá está la lista de noticias de la versión Xindong <br>
-
-<!-- Este for carga todas las noticias -->
-<% Post.where(category: "Noticias").each do |noticia| %>
-  <%= noticia.thumbnail %>
-  <%= link_to noticia.title, noticia %> <br>
-<% end %>
-
-<!-- Esta parte es el panel de log-in/sign-in -->
-<hr>
-<%= render 'shared/userlogin' %>
-<hr>
