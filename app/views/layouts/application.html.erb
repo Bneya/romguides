@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>ROM wiki español</title>
-    <link rel="shortcut icon" href="/upper_logo.png">
+    <link rel="shortcut icon" href="/upper_logo.ico">
     <!-- %= csrf_meta_tags % -->
     <!-- %= csp_meta_tag %> -->
 
@@ -49,7 +49,7 @@
 
 <header class="header_area" id="header">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark", style="position: fixed; width:100%;margin-top: -60px;">
-  <a class="navbar-brand" href="/"><%= image_tag "/logo.png", style: 'height:50px ;width: 60px;', alt: "" %></a>
+  <a class="navbar-brand" href="/"><%= image_tag "/upper_logo.ico", style: 'height:50px ;width: 60px;', alt: "" %></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -59,10 +59,10 @@
 <% if user_signed_in? %>
 
       <li class="nav-item">
-        <p class="nav-link">Conectado como: <%= current_user.email %></p>
+        <p class="nav-link" style="padding-top: 14px;">Conectado como: <%= current_user.email %></p>
       </li>
       <li class="nav-item">
-        <%= link_to('Perfil', profile_path(current_user.id), method: :get, :class=>"nav-link") %>
+        <%= link_to('Perfil', profile_path(Profile.where(user_id: current_user.id).first.id), method: :get, :class=>"nav-link") %>
       </li>
       <li class="nav-item">
         <%= link_to('Desconectarse', destroy_user_session_path, method: :get, :class=>"nav-link") %>
