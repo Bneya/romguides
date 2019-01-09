@@ -1,8 +1,38 @@
 <% if user_signed_in? %>
-  Crear nuevo post
+
+<div class="row">
+  <div class="col" style="text_align: center;">
+    <h1 style="text-align: center;">Crear nuevo post</h1>
+  </div>
+</div>
+<br>
+
   <%= render 'form' %>
+  
 <% else %>
-  Debes estár logeado para crear un post <br>
-  <%= render 'shared/userlogin' %>
-  <br><%= link_to "Volver al inicio", root_path %>
+  <br><br><br>
+  <h1 style="text-align: center;">Necesitas ingresar a tu cuenta para crear un post </h1>
+  <br><br><br>
+
+  <div class="container" style="text-align: center;
+                                font-size: 25px;">
+    <div class="row">
+      <div class="col">
+        <%= link_to('Iniciar sesión', new_user_session_path) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= link_to('Registrarse', new_user_registration_path)  %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= link_to "Volver al inicio", root_path %>
+      </div>
+    </div>
+  </div>
+
+
+
 <% end %>

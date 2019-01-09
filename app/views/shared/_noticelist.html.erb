@@ -1,0 +1,52 @@
+
+<div class="containter" style="padding-left: 10px">
+  <div class="row">
+    <div class="col" style="text-align: center">
+      <h1 style="color: #667"> <%= @asked_cat %> </h1> <br><br>
+    </div>
+  </div>
+  <% Post.where(category: @asked_cat).where(status: "accepted").each do |article| %>
+  <div class="row">
+    <% if article.thumbnail === "auto" %>
+      <% @imagepath = "/imagescategories/" + article.category.gsub(/\s+/, "").downcase + "icon.png" %>
+    <% else %>
+      <% @imagepath = article.thumbnail %>
+    <% end %>
+
+    <!-- %= "IMAGEPATH" + @imagepath % -->
+    <div class="col-4" style= "text-align: center;
+                               background-size: cover;
+                               background-position: center;
+                               min-height: 80px;
+                               padding-right: 0px;
+                               padding-left: 0px;">
+      <% begin %>
+        <%= image_tag(@imagepath, :class => "customthumbnail") %>
+      <% rescue %>
+        no_thumbnail
+      <% end %>
+
+
+    </div>
+
+    <div class="col-8">
+
+      <div class="container">
+        <div class="row">
+          <div class="col" style="text-align: justify;">
+            <h2><%= link_to article.title, article %></h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="text-align: justify;">
+            <%= strip_tags(article.content)[0..200] + " ..." %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <hr>
+
+  <% end %>
+</div>

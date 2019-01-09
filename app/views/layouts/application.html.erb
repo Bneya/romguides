@@ -1,24 +1,115 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <title>ROM wiki español</title>
+    <link rel="shortcut icon" href="/upper_logo.ico">
+    <!-- %= csrf_meta_tags % -->
+    <!-- %= csp_meta_tag %> -->
+
+    <!-- %= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' % -->
+    <!-- %= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' % -->
+
+    <% csrf_meta_tags %>
+    <% csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- Desactivados porque hacen que no funcionen los dropdowns-->
+    <!-- script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+
+    <!-- Para hacer que funcione responsive-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Template de post show -->
+    <link href="app/assets/stylesheets/blog-post.css" >
+
+    <!-- Import de clases para login screen-->
+    <link href="app/assets/stylesheets/loginscreen.css" >
+
+    <!-- Import relacionados al sidebarmenu -->
+    <link href="app/assets/stylesheets/sidebar_style.css" >
+
+    <!-- Import de clases custom, debe estar al final para sobreescribir cualquier cosa-->
+    <link href="app/assets/stylesheets/customclasses.css" >
+
+    <meta http-equiv="Cache-Control" content="max-age=200" />
+
   </head>
 
-  <body>
+  <body style="margin-top: 0px">
+    <!-- Para administrar las alertas. Ahora no son alerts -->
 
+<!-- HEADER -->
 
+<header class="header_area" id="header">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark", style="position: fixed; width:100%;margin-top: -60px;">
+  <a class="navbar-brand" href="/"><%= image_tag "/upper_logo.ico", style: 'height:50px ;width: 60px;', alt: "" %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
 
-    <% flash.each do |name, msg| %>
-      <div class='alert alert-info'>
-        <%= msg %>
-      </div>
-    <% end %>
+<% if user_signed_in? %>
+
+      <li class="nav-item">
+        <p class="nav-link" style="padding-top: 14px;">Conectado como: <%= current_user.email %></p>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Perfil', profile_path(Profile.where(user_id: current_user.id).first.id), method: :get, :class=>"nav-link") %>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Desconectarse', destroy_user_session_path, method: :get, :class=>"nav-link") %>
+      </li>
+
+<% else %>
+
+      <li class="nav-item">
+        <%= link_to('Iniciar sesión', new_user_session_path, :method=>"get", :class=>"nav-link") %>
+      </li>
+      <li class="nav-item">
+        <%= link_to('Registrarse', new_user_registration_path, :method=>"get", :class=>"nav-link") %>
+      </li>
+
+<% end %>
+
+    </ul>
+  </div>
+</nav>
+</header>
+
+  <% flash.each do |name, msg| %>
+    <div class='alert alert-info'>
+      <%= msg %>
+    </div>
+  <% end %>
+
+<!-- END HEADER -->
 
     <%= yield %>
+
+<!-- FOOTER -->
+  <div id="footer" style="text-align: right;
+                 font-size: 7px; padding-right: 5px;margin-top: 30%">
+    <br><br><br>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/nikita-golubev" title="Nikita Golubev">Nikita Golubev</a>,
+                       <a href="https://www.freepik.com/" title="Freepik">Freepik</a>,
+                       <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a>,
+                      <a href="https://www.flaticon.com/authors/eucalyp" title="Eucalyp">Eucalyp</a>,
+                      <a href="https://www.flaticon.com/authors/skyclick" title="Skyclick">Skyclick</a>
+        from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+        is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"  title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+  </div>
+
+<!-- END FOOTER -->
+
+
   </body>
 </html>

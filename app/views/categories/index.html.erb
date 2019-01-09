@@ -10,22 +10,7 @@ Estamos en categories/index <br>
 
 Estas son las categorías de ROM XINDONG: <br>
 
-<% @cats_xindong = @categories.where(versioncat: "Xindong") %>
-
-<br> MACROCATEGORÍA DE CRECIMIENTO DE PERSONAJE <br>
-<% @cats_xindong.where(macrocat: "char_growth").each do |cat| %>
-  <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
-<% end %>
-
-<br> MACROCATEGORÍA DE LIFE SKILLS <br>
-<% @cats_xindong.where(macrocat: "life_skills").each do |cat| %>
-  <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
-<% end %>
-
-<br> MACROCATEGORÍA DE MISCELÁNEO <br>
-<% @cats_xindong.where(macrocat: "misc").each do |cat| %>
-  <%= link_to cat.name, posts_path(:category => cat.name, :version => cat.versioncat) %> <br>
-<% end %>
+<%= render 'shared/sidebarmenu' %>
 
 <!-- Acá tenemos que añadir las secciones de ROM TENCENT -->
 

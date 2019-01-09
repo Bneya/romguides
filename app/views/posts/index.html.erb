@@ -1,10 +1,44 @@
-Estamos viendo los posts de la categoría: <%= @asked_cat %> <br> <br>
+<head>
+
+</head>
 
 
-<hr>
+<body>
 
-<%= render 'guideslist' %>
 
-<hr>
+  <!-- Page Content -->
+  <div class="container px-0" style="padding-right: 15px!important;
+                                     padding-left: 15px!important;">
 
-<%= link_to "Volver al inicio", root_path%>
+    <div class="row no-gutters" style="margin-right: -15px;
+                                       margin-left: -15px">
+      <div class="col">
+        <%= image_tag("https://i.imgur.com/zBBfmzk.png", :class=>"custombanner")%>
+      </div>
+    </div>
+
+    <div class="row no-gutters" style="margin-right: -15px;
+                                       margin-left: -15px"">
+
+      <!-- Post Content Column -->
+      <div class="col-md-4 col-xs-4 no-gutters" style="text-align: center;
+                                                       ">
+
+        <%= render "shared/sidebarmenu" %>
+
+      </div>
+
+      <!-- Columna lista de noticias -->
+      <div class="col-md-8" style="border: 1px solid #000000;
+                                   padding: 15px;">
+
+        <%= render "shared/noticelist" %>
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+</body>

@@ -1,0 +1,44 @@
+<head>
+  <style type="text/css">
+    .form-control {
+  width: 100%;
+  height: 30px;
+  font-family: medium Verdana,sans-serif;
+  font: medium;
+  resize: none;
+  border-radius: 18px;
+  border: 1px solid #428bca;
+  padding-left: 15px;
+  padding-top: 3px;
+    }
+  </style>
+</head>
+
+<body>
+
+<%= simple_form_for(@profile) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :username, :class => 'form-control' %>
+    <br>
+    <%= f.input :description, :class => 'form-control', :style => "height: 500px" %>
+    <br>
+    <% if current_user.has_role? :admin %>
+    <%= f.collection_radio_buttons(:pic, ["bandit", "bug", "dr815", "frozenwolf", "galion", "gargoyle", "metal_dragon", "recon_robot", "scaraba", "step", "taffy", "tamadora", "unicorn", "woodie", "zombie_guard", "BOSS-amdarias", "BOSS-amon_ra", "BOSS-assassin_cross_eremes", "BOSS-atroce", "BOSS-bacsojin", "BOSS-baphomet", "BOSS-beelzebub", "BOSS-boitata", "BOSS-buwaya"].map {|gender| [gender, gender]}, :first, :last) do |i|
+    i.label { image_tag("/profile_pics/#{i.text}/picture.gif", :style => "width: 50px; height: 50px;") + i.radio_button }
+    end%>
+    <% else %>
+    <%= f.collection_radio_buttons(:pic, ["bandit", "bug", "dr815", "frozenwolf", "galion", "gargoyle", "metal_dragon", "recon_robot", "scaraba", "step", "taffy", "tamadora", "unicorn", "woodie", "zombie_guard"].map {|gender| [gender, gender]}, :first, :last) do |i|
+    i.label { image_tag("/profile_pics/#{i.text}/picture.gif", :style => "width: 50px; height: 50px;") + i.radio_button }
+    end%>
+  <%end%>
+  </div>
+  <br>
+  <div class="form-actions">
+    <%= f.button :submit, :class=> "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
+  </div>
+<% end %>
+
+</body>
+

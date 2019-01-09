@@ -1,11 +1,112 @@
-<%= @post.title.html_safe %>
-<br>
-<%= @post.content.html_safe %>
-<br>
-ID de usuario:
-<br>
-<%= @post.user_id %>
-<br>
-<%= link_to "Editar", edit_post_path(@post) %>
-<%= link_to "Borrar post", post_path(@post), method: :delete, data: {confirm: "Estás seguro de borrar?"} %>
-<%= link_to "Volver a casa", root_path %>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Post - Start Bootstrap Template</title>
+
+
+  </head>
+
+  <body>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4"><%= @post.title.html_safe %></h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by
+            <a href="#"><%= @post.user_id %> post user id placehoder</a>
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p>Publicado el <%= @post.created_at %></p>
+
+          <hr>
+
+
+          <!-- Post Content -->
+          <%= @post.content.html_safe %>
+
+
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+
+          <!-- Wiget herramientas de navegación -->
+          <div class="card my-4">
+            <h5 class="card-header">Herramientas de navegación</h5>
+            <div class="card-body">
+              <%= link_to "Volver", :back %> <br>
+              <%= link_to "Ir al inicio", root_path %>
+            </div>
+          </div>
+
+          <!-- Widget de edición -->
+          <div class="card my-4">
+            <h5 class="card-header">Herramientas de edición</h5>
+            <div class="card-body">
+              <% if user_signed_in? && current_user.id === @post.user_id %>
+                <%= link_to "Editar post", edit_post_path(@post) %>
+
+                <!-- No creo que deberíamos dejar que la gente borre sus post -->
+                <!-- link_to "Borrar post", post_path(@post), method: :delete, data: {confirm: "Estás seguro de borrar?"} -->
+              <% else %>
+                Solo el creador del post puede editarlo
+              <% end %>
+
+              <br> El estado actual del post es <b><%= @post.status %></b>
+
+            </div>
+          </div>
+
+          <!-- Widget de moderación -->
+          <div class="card my-4">
+            <h5 class="card-header">Herramientas de moderación</h5>
+            <div class="card-body">
+              <% if user_signed_in? %>
+                <% if current_user.has_role? :admin  %>
+                  <%= button_to 'Marcar como aceptado', markstatus_path(:id => @post.id, :newstatus => 'accepted'), method: :post %>
+                  <%= button_to 'Marcar como rechazado', markstatus_path(:id => @post.id, :newstatus => 'rejected'), method: :post %>
+                  <%= button_to 'Marcar como pendiente', markstatus_path(:id => @post.id, :newstatus => 'pending'), method: :post %>
+
+                <% else %>
+                  Solo los moderadores tienen acceso a estas herramientas
+                <% end %>
+
+              <% else %>
+                Solo los moderadores tienen acceso a estas herramientas
+
+              <% end %>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+</body>
+</html>

@@ -7,9 +7,9 @@ ruby '2.5.3'
 gem 'rails', '~> 5.2.2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
-gem 'sass-rails', '~> 5.0'
+# gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'duktape'
+# gem 'duktape' desactivada por causar problemas. Ni sé qué hace
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
@@ -23,8 +23,15 @@ gem 'seed_dump'
 gem "ckeditor"
 gem 'rolify', '~> 5.2'
 
+
 # Cosas de bootstrap
-gem 'bootstrap'
+gem 'bootstrap-sass'
+gem 'bootstrap', '~> 4.0.0'
+
+# gem 'sassc-rails', '>= 2.0.0'
+gem 'autoprefixer-rails'
+gem 'mini_racer'
+gem 'sprockets'
 gem 'jquery-rails'
 
 group :development, :test do

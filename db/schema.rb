@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_27_055051) do
+ActiveRecord::Schema.define(version: 2019_01_05_185127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,17 +44,6 @@ ActiveRecord::Schema.define(version: 2018_12_27_055051) do
     t.integer "precedence"
   end
 
-  create_table "guides", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "category"
-    t.string "thumbnail"
-    t.integer "user_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -65,6 +54,15 @@ ActiveRecord::Schema.define(version: 2018_12_27_055051) do
     t.string "thumbnail"
     t.string "status"
     t.string "version"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.text "description"
+    t.string "username"
+    t.string "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "roles", force: :cascade do |t|
