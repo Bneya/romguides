@@ -22,18 +22,12 @@
       <div class="row">
 
         <!-- Post Content Column -->
-        <div class="col-lg-8">
+        <div class="col-lg-8" style="text-align: justify;">
 
           <!-- Title -->
           <h1 class="mt-4"><%= @post.title.html_safe %></h1>
 
-          <!-- Author -->
-          <p class="lead">
-            by
-            <a href="#"><%= @post.user_id %> post user id placehoder</a>
-          </p>
 
-          <hr>
 
           <!-- Date/Time -->
           <p>Publicado el <%= @post.created_at %></p>
@@ -51,6 +45,31 @@
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
+          <!-- Wiget herramientas de navegación -->
+          <div class="card my-4">
+            <h5 class="card-header">Creado por</h5>
+            <div class="card-body">
+              <% @creator = Profile.where(user_id: @post.user_id).first %>
+              <% @username = @creator.username %>
+              <% @creator_pic = @creator.pic %>
+
+              <div class="container">
+                <div class="row" style="border: 1px solid rgba(0,0,0,.125);
+                                       ">
+                  <div class="col my-auto" style="text-align: center;
+                                                 font-size: 18px;">
+                    <%= link_to(@username, profile_path(@creator.id)) %>
+                  </div>
+                  <div class="col" style="text-align: right;">
+                    <%= image_tag "/profile_pics/" + @creator_pic + "/picture.gif", :style=>"width: 100px; height:100px;" %>
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>
+          </div>
 
           <!-- Wiget herramientas de navegación -->
           <div class="card my-4">
