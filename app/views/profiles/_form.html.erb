@@ -20,10 +20,11 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <div class="form-inputs">
-    <%= f.input :username, :class => 'form-control' %>
+    <%= f.input :username, :class => 'form-control', :label => "Nombre de usuario"%>
     <br>
-    <%= f.input :description, :class => 'form-control', :style => "height: 500px" %>
+    <%= f.input :description, :class => 'form-control', :style => "height: 500px", :label => "Descripción" %>
     <br>
+    <p>Seleccione una mascota</p>
     <% if current_user.has_role? :admin %>
     <%= f.collection_radio_buttons(:pic, ["bandit", "bug", "dr815", "frozenwolf", "galion", "gargoyle", "metal_dragon", "recon_robot", "scaraba", "step", "taffy", "tamadora", "unicorn", "woodie", "zombie_guard", "BOSS-amdarias", "BOSS-amon_ra", "BOSS-assassin_cross_eremes", "BOSS-atroce", "BOSS-bacsojin", "BOSS-baphomet", "BOSS-beelzebub", "BOSS-boitata", "BOSS-buwaya"].map {|gender| [gender, gender]}, :first, :last) do |i|
     i.label { image_tag("/profile_pics/#{i.text}/picture.gif", :style => "width: 50px; height: 50px;") + i.radio_button }
