@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     Profile.create(:user_id => current_user.id,
                    :description => "Nada por aquí aún Cámara",
                    :username => "user" + current_user.id.to_s,
-                   :pic => "profilepic1")
+                   :pic => "bug")
 
   end
 
