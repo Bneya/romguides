@@ -59,7 +59,7 @@
 <% if user_signed_in? %>
 
       <li class="nav-item">
-        <p class="nav-link" style="padding-top: 14px;">Conectado como: <%= current_user.email %></p>
+        <p class="nav-link" style="padding-top: 14px;">Conectado como: <%= Profile.where(user_id: current_user.id).first.username %></p>
       </li>
       <li class="nav-item">
         <%= link_to('Perfil', profile_path(Profile.where(user_id: current_user.id).first.id), method: :get, :class=>"nav-link") %>
