@@ -59,6 +59,14 @@
                   <div class="col my-auto" style="text-align: center;
                                                  font-size: 18px;">
                     <%= link_to(@username, profile_path(@creator.id)) %>
+                    <br>
+                    <h10 style="color: gray; font-size: 10px;">
+                        <% if User.find(@post.user_id).has_role? :admin %>
+                            Admin
+                        <% else %>
+                            Novice
+                        <% end %>
+                    </h10>
                   </div>
                   <div class="col" style="text-align: right;">
                     <%= image_tag "/profile_pics/" + @creator_pic + "/picture.gif", :style=>"width: 100px; height:100px;" %>
