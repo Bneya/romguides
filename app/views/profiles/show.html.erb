@@ -4,9 +4,11 @@
         <div class="col-sm-2">
         	<br><br>
             <h1 class=""><%= @profile.username %></h1>
-            <% if current_user.id == @profile.user_id%>
+            <% if user_signed_in? %>
+            <% if current_user.id == @profile.user_id %>
             <%= button_to 'Editar', edit_profile_path(@profile), :method=>"get", :class=> "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
-            <% end%>
+            <% end %>
+            <% end %>
         </div>
         <div class="col-sm-1">
         	<br><br>
