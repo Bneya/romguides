@@ -14,7 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     # Acá añades cualquier cosa que quieras
     Profile.create(:user_id => current_user.id,
-                   :description => "Nada por aquí aún Cámara",
+                   :description => "Nada por aquí aún",
                    :username => "user" + current_user.id.to_s,
                    :pic => "bug")
 

@@ -67,7 +67,8 @@ body {
 
 .custombanner {
   width: inherit;
-  border: 1px solid #000000;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .customthumbnail {
