@@ -1,15 +1,17 @@
 <div class="container target">
     <div class="row">
-        <div class="col-sm-10">
+    	<!---  style="background-image: url(<%= '/profile_pics/' + @profile.pic + '/cover.jpg' %>);" --->
+        <div class="col-sm-2">
         	<br><br>
             <h1 class=""><%= @profile.username %></h1>
             <% if current_user.id == @profile.user_id%>
-            <%= button_to 'Editar perfil', edit_profile_path(@profile), :method=>"get" %>
+            <%= button_to 'Editar', edit_profile_path(@profile), :method=>"get", :class=> "btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" %>
             <% end%>
         </div>
-      <div class="col-sm-2"><a href="/users" class="pull-sright"><img title="profile image" class="img-circle img-responsive" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBG685vI07-3MsuqJxjCfzIabfFJJG-8yM-ppvjjNpD5QNtWNE4A"></a>
-      </div>
-      <p>Imagen: <%= @profile.pic %></p>
+        <div class="col-sm-1">
+        	<br><br>
+        	<%= image_tag "/profile_pics/" + @profile.pic + "/picture.gif", :style=>"width: 100px; height:100px;" %>
+        </div>
     </div>
   <br>
     <div class="row">
@@ -21,6 +23,7 @@
                 <li class="list-group-item text-muted" contenteditable="false"><%= @profile.description %></li>
             </ul>
         </div>
+        <div class="col-sm-7">
         <% Post.where(user_id: @profile.user_id).order(:status, :created_at).each do |article| %>
         	<div class="row">
 			    <div class="col-4" style= "text-align: center;">
@@ -39,10 +42,10 @@
 			          </div>
 			        </div>
 			      </div>
-
 			    </div>
 			  </div>
 			  <hr>
         <%end%>
+    	</div>
 	</div>
 </div>
