@@ -71,6 +71,10 @@ body {
 }
 
 .customthumbnail {
+  max-width: 100%;
+  max-height: 128px;
+}
+
+.customctextarea {
   width: inherit;
-  max-height: 100px;
 }

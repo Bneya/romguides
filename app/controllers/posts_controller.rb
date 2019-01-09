@@ -80,6 +80,7 @@ class PostsController < ApplicationController
     # Esto es lo que hay que ir rellenando luego con las categorías finales
     @categories = CategoriesController.categories
     @versions = CategoriesController.versions
+    @versions = ["Xindong"]
     @cat_names = CategoriesController.cat_names
 
     @thumbnails_list = ['img1', 'img2', 'img3', 'img4']
