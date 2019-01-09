@@ -18,33 +18,38 @@
         <div class="col-sm-3">
             <!--left col-->
             <ul class="list-group">
-                <li class="list-group-item text-muted" contenteditable="false"><%= @profile.user_id %></li>
+                <li class="list-group-item text-muted" contenteditable="false">ID de usuario: <%= @profile.user_id %></li>
                 <li class="list-group-item text-right"><span class="pull-left"><strong class="">Username: </strong></span><%= @profile.username %></li>
                 <li class="list-group-item text-muted" contenteditable="false"><%= @profile.description %></li>
             </ul>
+            <br><br>
         </div>
         <div class="col-sm-7">
+          <div class="row">
+            <div class="col" style="text-align: center;">
+              <h1>Todos los post de este usuario</h1> <br><br>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3" style="text-align: center;">
+              <h3>Estado</h3> <br>
+            </div>
+            <div class="col" style="text-align: center;">
+              <h3>Título del post</h3> <br>
+            </div>
+          </div>
+
         <% Post.where(user_id: @profile.user_id).order(:status, :created_at).each do |article| %>
         	<div class="row">
-			    <div class="col-4" style= "text-align: center;">
-			      <%= article.thumbnail %>
+            <div class="col-3" style="text-align: center;">
+              <%= article.status %>
+            </div>
+            <div class="col" style="text-align: justify;">
+              <h3><%= link_to article.title, article %></h3>
+            </div>
 			    </div>
-			    <div class="col-8">
-			      <div class="container">
-			        <div class="row">
-			          <div class="col">
-			            <h2><%= link_to article.title, article %></h2>
-			          </div>
-			        </div>
-			        <div class="row">
-			          <div class="col">
-			            <%= strip_tags(article.content)[0..300] + " ..." %>
-			          </div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			  <hr>
+			    <hr>
         <%end%>
     	</div>
 	</div>
