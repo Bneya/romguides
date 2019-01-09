@@ -1,0 +1,14 @@
+<% if current_user.id == @post.user_id %>
+	<div class="row">
+	  <div class="col" style="text_align: center; padding-top: 7px;">
+	    <h1 style="text-align: center;">Editar post</h1>
+	  </div>
+	</div>
+	<%= render 'form' %>
+
+<% else %>
+	<script type="text/javascript">
+		window.location.href="/403.html"
+	</script>
+
+<% end %>
